@@ -6,21 +6,16 @@
 //
 
 import SwiftUI
+import WebKit
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+struct BrowserView: NSViewRepresentable {
+    func makeNSView(context: Context) -> WKWebView {
+        return WKWebView()
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    func updateNSView(_ nsView: WKWebView, context: Context) {
+        let url = URL(string: "https://chat.openai.com/")!
+        let request = URLRequest(url: url)
+        nsView.load(request)
     }
 }

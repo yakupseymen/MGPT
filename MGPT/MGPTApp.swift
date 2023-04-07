@@ -10,8 +10,11 @@ import SwiftUI
 @main
 struct MGPTApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra{
+            BrowserView().frame(width: 400,height: 600)
+        } label:{
+            Image(systemName: "atom")
         }
+        .menuBarExtraStyle(.window)
     }
 }
